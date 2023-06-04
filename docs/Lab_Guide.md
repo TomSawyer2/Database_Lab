@@ -564,7 +564,30 @@ SQL Server安装：（免费Develop版即可）https://www.microsoft.com/zh-tw/s
 
 todo: 补充汉诺塔代码
 ```sql
+DROP PROCEDURE IF EXISTS hanoi;
+DELIMITER //
 
+CREATE PROCEDURE hanoi(n INT)
+BEGIN
+    DECLARE source VARCHAR(20) DEFAULT 'A';
+    DECLARE target VARCHAR(20) DEFAULT 'C';
+    DECLARE auxiliary VARCHAR(20) DEFAULT 'B';
+
+    IF n > 0 THEN
+        -- 将 n-1 个盘子从源柱子移动到辅助柱子
+        CALL hanoi(n - 1);
+
+        -- 将第 n 个盘子从源柱子移动到目标柱子
+        SELECT CONCAT('将盘子', n, '从', source, '移动到', target) AS step;
+
+        -- 将 n-1 个盘子从辅助柱子移动到目标柱子
+        CALL hanoi(n - 1);
+    END IF;
+END//
+
+DELIMITER ;
+-- 开启递归限制
+SET @@max_sp_recursion_depth = 10;
 ```
 
 调用方式：
