@@ -1,0 +1,47 @@
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS `Course`;
+CREATE TABLE `Course`  (
+  `Cno` int(0) NOT NULL COMMENT '课程号',
+  `Cname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '课程名',
+  `Cpno` int(0) NULL DEFAULT NULL COMMENT '先行课',
+  `Ccredit` int(0) NULL DEFAULT NULL COMMENT '学分'
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+INSERT INTO `Course` VALUES (1, '数据库', 5, 4);
+INSERT INTO `Course` VALUES (2, '数学', NULL, 2);
+INSERT INTO `Course` VALUES (3, '信息系统', 1, 4);
+INSERT INTO `Course` VALUES (4, '操作系统', 6, 3);
+INSERT INTO `Course` VALUES (5, '数据结构', 7, 4);
+INSERT INTO `Course` VALUES (6, '数据处理', NULL, 2);
+INSERT INTO `Course` VALUES (7, 'PASCAL语言', 6, 4);
+
+DROP TABLE IF EXISTS `SC`;
+CREATE TABLE `SC`  (
+  `Sno` int(0) NOT NULL COMMENT '学号',
+  `Cno` int(0) NOT NULL COMMENT '课程号',
+  `Grade` int(0) NULL DEFAULT NULL COMMENT '成绩'
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+INSERT INTO `SC` VALUES (201215121, 1, 92);
+INSERT INTO `SC` VALUES (201215121, 2, 85);
+INSERT INTO `SC` VALUES (201215121, 3, 88);
+INSERT INTO `SC` VALUES (201215122, 2, 90);
+INSERT INTO `SC` VALUES (201215122, 3, 80);
+
+DROP TABLE IF EXISTS `Student`;
+CREATE TABLE `Student`  (
+  `Sno` int(0) NOT NULL COMMENT '学号',
+  `Sname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '姓名',
+  `Ssex` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '性别',
+  `Sage` int(0) NULL DEFAULT NULL COMMENT '年龄',
+  `Sdept` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '所在系'
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+INSERT INTO `Student` VALUES (201215121, '李勇', '男', 20, 'CS');
+INSERT INTO `Student` VALUES (201215122, '刘晨', '女', 19, 'CS');
+INSERT INTO `Student` VALUES (201215123, '王敏', '女', 18, 'MA');
+INSERT INTO `Student` VALUES (201215125, '张立', '男', 19, 'IS');
+
+SET FOREIGN_KEY_CHECKS = 1;
