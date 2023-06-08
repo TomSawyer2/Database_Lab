@@ -562,7 +562,6 @@ SQL Server安装：（免费Develop版即可）https://www.microsoft.com/zh-tw/s
 
 ### 汉诺塔问题（这题在MySQL写）
 
-todo: 补充汉诺塔代码
 ```sql
 DROP PROCEDURE IF EXISTS hanoi;
 DELIMITER //
